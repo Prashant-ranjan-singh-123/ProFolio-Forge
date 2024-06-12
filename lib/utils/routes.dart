@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:resume_app1/screens/homeScreen/Education.dart';
-import 'package:resume_app1/screens/homeScreen/Experience.dart';
-import 'package:resume_app1/screens/homeScreen/Projects.dart';
-import 'package:resume_app1/screens/homeScreen/Skills.dart';
-import 'package:resume_app1/screens/homeScreen/login%20page/login.dart';
-import 'package:resume_app1/screens/homeScreen/pdf/pdfScreen.dart';
-import '../screens/Splash/SplashScreen.dart';
-import '../screens/homeScreen/ContactInfo.dart';
-import '../screens/homeScreen/PersonalStatement.dart';
-import '../screens/homeScreen/Reference.dart';
-import '../screens/homeScreen/drawerPage.dart';
+import 'package:resume_app1/screens/after_login/home_view_page/drawer_item/Education.dart';
+import 'package:resume_app1/screens/after_login/home_view_page/drawer_item/Experience.dart';
+import 'package:resume_app1/screens/after_login/home_view_page/drawer_item/Projects.dart';
+import 'package:resume_app1/screens/after_login/home_view_page/drawer_item/Skills.dart';
+import 'package:resume_app1/screens/before_login/login_page/login.dart';
+import 'package:resume_app1/screens/after_login/pdf_view_page/pdfScreen.dart';
+import '../screens/SplashScreen.dart';
+import '../screens/after_login/home_view_page/drawer_item/ContactInfo.dart';
+import '../screens/after_login/home_view_page/drawer_item/PersonalStatement.dart';
+import '../screens/after_login/home_view_page/drawer_item/Reference.dart';
+import '../screens/after_login/home_view_page/home_page.dart';
 
 
 
@@ -19,7 +19,7 @@ class AppRoutes
 
     '/':(context)=>const SplashScreen(),
     '/person':(context)=>const PersonalStatement(),
-    '/draw':(context) => const DrawerPage(),
+    '/draw':(context) => const Home_page(),
      '/info':(context)=> const ContactInfo(),
      '/edu':(context)=> const EducationDetail(),
      '/exp':(context)=> const ExperienceDetail(),
