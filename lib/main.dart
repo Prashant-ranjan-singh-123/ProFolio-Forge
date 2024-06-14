@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       // routes: AppRoutes.routes,
-      home: SplashScreen(),
+      // home: SplashScreen(),
       // home: LoginPage(),
-      // home: GlobalBottomNav(),
+      home: GlobalBottomNav(),
     );
   }
 }

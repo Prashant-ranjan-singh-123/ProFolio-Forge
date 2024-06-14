@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Development{
@@ -90,7 +91,7 @@ class Development{
                       SizedBox(
                         height: 20,
                           width: 20,
-                          child: Image.asset("assets/image/github.png", color: Colors.white,)),
+                          child: Icon(MdiIcons.github, color: Colors.white,)),
                       SizedBox(width: 10,),
                       const Text(
                         "Contribute",

@@ -3,6 +3,7 @@ import 'package:resume_app1/utils/bottom_nav_util/sample_widget.dart';
 import 'package:resume_app1/utils/bottom_nav_util/size_config.dart';
 
 import '../../screens/after_login/home_view_page/home_page.dart';
+import '../../screens/after_login/profile_page/profile_page.dart';
 
 List<Widget> screens = [
   Home_page(),
@@ -14,14 +15,7 @@ List<Widget> screens = [
     label: 'View Resume',
     color: Colors.cyan,
   ),
-  const SampleWidget(
-    label: 'Ats Score',
-    color: Colors.deepOrangeAccent,
-  ),
-  const SampleWidget(
-    label: 'Profile',
-    color: Colors.redAccent,
-  ),
+  ProfilePage()
 ];
 
 double animatedPositionedLEftValue(int currentIndex) {
