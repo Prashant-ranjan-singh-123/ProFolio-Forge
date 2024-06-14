@@ -13,13 +13,25 @@ class EducationDetail extends StatefulWidget {
 }
 
 class _EducationDetailState extends State<EducationDetail> {
+
+  void add_item(){
+    setState(() {
+            controllerList.add(ControllerModel(
+                txtCourse: txtCourse,
+                txtGrade: txtPercentage,
+                txtYear: txtStart,
+                txtSchool: txtSchool));
+          });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: const Color.fromRGBO(10, 20, 44, 1),
-      appBar: MyAppBar.customAppBar(title: 'Education'),
+      appBar: MyAppBar.customAppBarWithRRightButton(title: 'Education', fun: add_item),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(15),
@@ -40,7 +52,7 @@ class _EducationDetailState extends State<EducationDetail> {
                           decoration: BoxDecoration(
                               border:
                                   Border.all(color: Colors.white54, width: 0.5),
-                              color: const Color.fromRGBO(57, 21, 164, 1),
+                              color: Color.fromARGB(255, 21, 14, 143),
                               borderRadius: BorderRadius.circular(20)),
                           child: Column(
                             children: [
@@ -60,9 +72,9 @@ class _EducationDetailState extends State<EducationDetail> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      const Text(
-                                        'Education',
-                                        style: TextStyle(
+                                      Text(
+                                        '${index+1}) Education',
+                                        style: const TextStyle(
                                             color: Colors.white, fontSize: 20),
                                       ),
                                       GestureDetector(
@@ -129,26 +141,21 @@ class _EducationDetailState extends State<EducationDetail> {
       ),
       floatingActionButton: GestureDetector(
         onTap: () {
-          setState(() {
-            controllerList.add(ControllerModel(
-                txtCourse: txtCourse,
-                txtGrade: txtPercentage,
-                txtYear: txtStart,
-                txtSchool: txtSchool));
-          });
+          
         },
         child: Card(
           shadowColor: const Color.fromRGBO(32, 22, 211, 1),
           elevation: 20,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           child: Container(
               decoration: BoxDecoration(
-                color: const Color.fromRGBO(57, 21, 164, 1),
-                border: Border.all(color: Colors.white54, width: 0.5),
-                borderRadius:  BorderRadius.circular(5)),
+                color: Color.fromARGB(255, 21, 14, 143),
+                border: Border.all(color: Colors.white54, width: 0.2),
+                borderRadius:  BorderRadius.circular(20)),
               child: const Padding(
                 padding: EdgeInsets.all(15),
-                child: const Icon(
-                  Icons.add,
+                child: Icon(
+                  Icons.check,
                   size: 30,
                   color: Colors.white,
                 ),

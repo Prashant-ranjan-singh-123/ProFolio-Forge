@@ -25,48 +25,71 @@ class _PersonalStatementState extends State<PersonalStatement> {
         child: Column(
           children: [
             takeData(con: txtSkill, label: 'Summary', icon: Icons.pages),
-            saveOrDelete(),
+            // saveOrDelete(),
           ],
         ),
       ),
+
+      floatingActionButton: Card(
+          shadowColor: const Color.fromRGBO(32, 22, 211, 1),
+          elevation: 20,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          child: Container(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 21, 14, 143),
+                border: Border.all(color: Colors.white54, width: 0.2),
+                borderRadius:  BorderRadius.circular(20)),
+              child: const Padding(
+                padding: EdgeInsets.all(15),
+                child: Icon(
+                  Icons.check,
+                  size: 30,
+                  color: Colors.white,
+                ),
+              )),
+        ),
     );
   }
 
-  Widget takeData(
-      {required TextEditingController con,
-      required String label,
-      required IconData icon}) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 15, left: 15, top: 15),
-      child: Column(
-        children: [
-          Card(
-            elevation: 25,
-            color: const Color.fromRGBO(82, 59, 153, 0.2),
-            child: TextFormField(
-              controller: con,
-              keyboardType: TextInputType.multiline,
-              minLines: 1,
-              maxLines: 8,
-              style:
-                  const TextStyle(color: Colors.white, fontFamily: 'Poppins'),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                labelText: label,
-                prefixIcon: Icon(
-                  icon,
-                  color: Colors.white,
-                ),
-                focusedBorder: InputBorder.none,
-                labelStyle: const TextStyle(
-                    color: Colors.white60, fontFamily: 'OpenSans'),
+  Widget takeData({
+  required TextEditingController con,
+  required String label,
+  required IconData icon,
+}) {
+  return Padding(
+    padding: const EdgeInsets.only(right: 15, left: 15, top: 15),
+    child: Column(
+      children: [
+        Card(
+          elevation: 25,
+          color: const Color.fromRGBO(82, 59, 153, 0.2),
+          child: TextFormField(
+            controller: con,
+            textAlign: TextAlign.center,
+            keyboardType: TextInputType.multiline,
+            minLines: 1,
+            maxLines: 8,
+            style: const TextStyle(color: Colors.white, fontFamily: 'Poppins'),
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              labelText: label, // Use label directly here
+              prefixIcon: Icon(
+                icon,
+                color: Colors.white,
+              ),
+              focusedBorder: InputBorder.none,
+              labelStyle: TextStyle(
+                color: Colors.white60,
+                fontFamily: 'OpenSans',
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
+
 
   Widget saveOrDelete() {
     return Padding(

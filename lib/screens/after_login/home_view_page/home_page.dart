@@ -257,14 +257,14 @@ class _Home_pageState extends State<Home_page> {
                       heading: 'Projects',
                       icon_name: Icons.web,
                       fun: _project_button),
-                  drawer_item(
-                      heading: 'Reference',
-                      icon_name: IconlyBold.profile,
-                      fun: _reference_button),
-                  drawer_item(
-                      heading: 'View CV',
-                      icon_name: Icons.remove_red_eye_outlined,
-                      fun: _view_cv),
+                  // drawer_item(
+                  //     heading: 'Reference',
+                  //     icon_name: IconlyBold.profile,
+                  //     fun: _reference_button),
+                  // drawer_item(
+                  //     heading: 'View CV',
+                  //     icon_name: Icons.remove_red_eye_outlined,
+                  //     fun: _view_cv),
                 ],
               ),
             )

@@ -106,10 +106,15 @@ class _ContactInfoState extends State<ContactInfo> {
                       fileImage!,
                       fit: BoxFit.cover,
                     )
-                  : Image.asset(
-                      'assets/img/person.png',
-                      fit: BoxFit.cover,
-                    ),
+                  : Card(
+                    color: Colors.transparent,
+                    shadowColor: const Color.fromRGBO(82, 59, 153, 1),
+                    elevation: 70,
+                    child: Image.asset(
+                        'assets/img/person.png',
+                        fit: BoxFit.cover,
+                      ),
+                  ),
             ),
             Positioned(
               bottom: 0,
@@ -123,7 +128,7 @@ class _ContactInfoState extends State<ContactInfo> {
                   });
                 },
                 child: const CircleAvatar(
-                  backgroundColor: Color.fromRGBO(69, 99, 155, 1),
+                  backgroundColor: const Color.fromRGBO(82, 59, 153, 1),
                   child: Icon(
                     Icons.camera,
                     size: 18,
@@ -181,11 +186,12 @@ class _ContactInfoState extends State<ContactInfo> {
             child: Container(
               height: Get.height * 0.1 - 30,
               decoration: BoxDecoration(
+                color: Color.fromRGBO(46, 33, 87, 0.1),
                 boxShadow: const [
                   BoxShadow(
-                      color: Color.fromRGBO(76, 67, 130, 1),
+                      color: Color.fromRGBO(96, 84, 163, 1),
                       blurRadius: 45,
-                      spreadRadius: 1,
+                      spreadRadius: 0.2,
                       blurStyle: BlurStyle.outer),
                 ],
                 border: Border.all(
@@ -201,7 +207,7 @@ class _ContactInfoState extends State<ContactInfo> {
                     },
                     child: const AutoSizeText(
                       maxLines: 1,
-                      'Delete Selection',
+                      'Save',
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w900,
@@ -209,27 +215,6 @@ class _ContactInfoState extends State<ContactInfo> {
                           fontSize: 22),
                     ),
                   ),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: 15,
-          ),
-          Expanded(
-            child: Container(
-              height: Get.height * 0.1 - 30,
-              decoration: BoxDecoration(
-                  color: const Color.fromRGBO(82, 59, 153, 1),
-                  borderRadius: BorderRadius.circular(10)),
-              child: const Center(
-                child: Text(
-                  'Save',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w900,
-                      fontFamily: 'OpenSans',
-                      fontSize: 22),
                 ),
               ),
             ),

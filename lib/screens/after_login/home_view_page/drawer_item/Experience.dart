@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../../shared/app_bar.dart';
 
@@ -10,57 +11,134 @@ class ExperienceDetail extends StatefulWidget {
 }
 
 class _ExperienceDetailState extends State<ExperienceDetail> {
+  void add_button(){
+    setState(() {
+            controllerList1.add(ControllerModel(
+                txtCompany: txtCompany,
+                txtDetail: txtDetail,
+                txtEYear: txtEYear,
+                txtPosition: txtPosition,
+                txtSYear: txtSYear));
+          });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: const Color.fromRGBO(10, 20, 44, 1),
-      appBar: MyAppBar.customAppBar(title: 'Experience'),
+      appBar: MyAppBar.customAppBarWithRRightButton(title: 'Experience', fun: add_button),
       body: SingleChildScrollView(
         child: Column(
           children: [
+            SizedBox(height: 15,),
             ...List.generate(
               controllerList1.length,
-              (index) => Container(
-                  // padding: EdgeInsets.all(15),
-                  margin: EdgeInsets.all(15),
-                  height: height * 0.5+20,
-                  width: width * 0.9,
+              (index) => experience_chip(index: index),
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: GestureDetector(
+        onTap: () {
+          
+        },
+        child: Card(
+          shadowColor: const Color.fromRGBO(32, 22, 211, 1),
+          elevation: 20,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          child: Container(
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 21, 14, 143),
+                border: Border.all(color: Colors.white54, width: 0.2),
+                borderRadius:  BorderRadius.circular(20)),
+              child: const Padding(
+                padding: EdgeInsets.all(15),
+                child: Icon(
+                  Icons.check,
+                  size: 30,
+                  color: Colors.white,
+                ),
+              )),
+        ),
+      ),
+    );
+  }
+
+  Widget experience_chip({required int index}) {
+    Widget takeData(
+        {required TextEditingController con,
+        required String label,
+        required IconData icon}) {
+      return Card(
+        elevation: 15,
+        color: const Color.fromRGBO(82, 59, 153, 0.3),
+        child: TextFormField(
+          controller: con,
+          style: const TextStyle(color: Colors.white, fontFamily: 'Poppins'),
+          decoration: InputDecoration(
+            border: InputBorder.none,
+            labelText: label,
+            prefixIcon: Icon(
+              icon,
+              color: Colors.white,
+            ),
+            focusedBorder: InputBorder.none,
+            labelStyle:
+                const TextStyle(color: Colors.white60, fontFamily: 'OpenSans'),
+          ),
+        ),
+      );
+    }
+    return Row(
+      children: [
+        const Expanded(child: SizedBox()),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Card(
+              elevation: 20,
+              shape:
+                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              shadowColor: const Color.fromRGBO(32, 22, 211, 1),
+              child: Container(
+                  width: Get.width * 0.9,
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
+                      border: Border.all(color: Colors.white54, width: 0.5),
+                      color: const Color.fromARGB(255, 21, 14, 143),
+                      borderRadius: BorderRadius.circular(20)),
                   child: Column(
-                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(),
-                        child: Container(
-                          height: height * 0.1 - 50,
-                          width: width * 0.9,
-                          decoration: BoxDecoration(
-                            color: Color(0xff1a2838),
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(15),
-                              topRight: Radius.circular(15),
-                            ),
+                      Container(
+                        height: Get.height * 0.1 - 40,
+                        width: Get.width * 0.9,
+                        decoration: const BoxDecoration(
+                          color: Color.fromRGBO(24, 28, 64, 1),
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20),
                           ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                '   Experience',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
+                                '${index+1}) Experience',
+                                style: TextStyle(color: Colors.white, fontSize: 20),
                               ),
                               GestureDetector(
                                 onTap: () {
+                                  print('early: ${controllerList1.length}');
                                   setState(() {
-                                    controllerList1.removeAt(index - 1);
+                                        controllerList1.removeAt(index - 1);
                                   });
+                                  print('after: ${controllerList1.length}');
                                 },
-                                child: Icon(
+                                child: const Icon(
                                   Icons.delete,
                                   color: Colors.white,
                                 ),
@@ -69,73 +147,62 @@ class _ExperienceDetailState extends State<ExperienceDetail> {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      buildTextFormField('Company name',
-                          controllerList1[index].txtCompany!),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      buildTextFormField(
-                          'Job title', controllerList1[index].txtPosition!),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      buildTextFormField(
-                          'Start date', controllerList1[index].txtSYear!),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      buildTextFormField(
-                          'End year', controllerList1[index].txtEYear!),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      buildTextFormField(
-                          'Details', controllerList1[index].txtDetail!),
+                      Padding(
+                        padding: const EdgeInsets.all(10),
+                        child: Container(
+                          child: Column(
+                            children: [
+                              takeData(
+                                  con: controllerList1[index].txtCompany!,
+                                  label: 'Company Name',
+                                  icon: Icons.badge),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              takeData(
+                                  con: controllerList1[index].txtPosition!,
+                                  label: 'Job Title',
+                                  icon: Icons.precision_manufacturing),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              takeData(
+                                  con: controllerList1[index].txtSYear!,
+                                  label: 'Starting Date',
+                                  icon: Icons.calendar_month),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              takeData(
+                                  con: controllerList1[index].txtEYear!,
+                                  label: 'Ending Date',
+                                  icon: Icons.calendar_month),const SizedBox(
+                                height: 10,
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              takeData(
+                                  con: controllerList1[index].txtDetail!,
+                                  label: 'Details',
+                                  icon: Icons.edit_document),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
                     ],
                   )),
             ),
+            const SizedBox(
+              height: 15,
+            )
           ],
         ),
-      ),
-      floatingActionButton: GestureDetector(
-        onTap: () {
-          setState(() {
-            controllerList1.add(ControllerModel(
-                txtCompany: txtCompany,
-                txtDetail: txtDetail,
-                txtEYear: txtEYear,
-                txtPosition: txtPosition,
-                txtSYear: txtSYear));
-          });
-        },
-        child: Container(
-            height: 45,
-            width: 100,
-            decoration: BoxDecoration(
-              color: Color(0xff1a2838),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(
-                  Icons.add,
-                  size: 30,
-                  color: Colors.white,
-                ),
-                Text(
-                  'Add',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
-            )),
-      ),
+        const Expanded(child: SizedBox())
+      ],
     );
   }
 }
@@ -148,9 +215,9 @@ Widget buildTextFormField(String label, TextEditingController controller) {
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: TextStyle(color: Colors.black),
-        enabledBorder: OutlineInputBorder(),
-        focusedBorder: OutlineInputBorder(),
+        labelStyle: const TextStyle(color: Colors.black),
+        enabledBorder: const OutlineInputBorder(),
+        focusedBorder: const OutlineInputBorder(),
       ),
     ),
   );

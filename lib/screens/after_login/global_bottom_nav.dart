@@ -46,7 +46,7 @@ class _GlobalBottomNavState extends State<GlobalBottomNav> {
   Widget build(BuildContext context) {
     AppSizes().init(context);
     return Scaffold(
-      backgroundColor: Color.fromRGBO(10, 20, 44, 1),
+      backgroundColor: const Color.fromRGBO(10, 20, 44, 1),
       body: Stack(
         children: [
           Container(
@@ -93,8 +93,8 @@ class _GlobalBottomNavState extends State<GlobalBottomNav> {
       child: Container(
         height: AppSizes.blockSizeHorizontal * 17,
         width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          color: const Color.fromRGBO(25, 26, 64, 1),
+        decoration: const BoxDecoration(
+          color: Color.fromRGBO(25, 26, 64, 1),
         ),
         child: Stack(
           children: [
